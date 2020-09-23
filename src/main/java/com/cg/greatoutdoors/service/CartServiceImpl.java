@@ -18,9 +18,7 @@ import com.cg.greatoutdoors.entity.User;
 import com.cg.greatoutdoors.exception.AddToCartException;
 import com.cg.greatoutdoors.exception.ProductException;
 import com.cg.greatoutdoors.exception.UserException;
-import com.cg.greatoutdoors.jpadao.CartInterface;
-import com.cg.greatoutdoors.jpadao.ProductInterface;
-import com.cg.greatoutdoors.jpadao.UserInterface;
+
 
 @Service
 @Transactional
@@ -31,12 +29,7 @@ public class CartServiceImpl implements CartServiceInterface {
 	private UserServiceInterface userService;
 	@Autowired
 	private ProductServiceInterface productService;
-	@Autowired
-	private CartInterface cartjpadao;
-	@Autowired
-	private ProductInterface productjpadao;
-	@Autowired
-	private UserInterface userjpadao;
+	
 	/********************************************************************************************************************
 	*       @author           Addala Sriharsha
 	*       Description       It is a service that check the userId , productId and if the product already present in cart
