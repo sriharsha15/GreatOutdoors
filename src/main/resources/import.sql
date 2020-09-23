@@ -1,6 +1,14 @@
 insert into guser(user_id,email,password,phone_number,role) values(1,'sridhar@gmail.com','basvaneni',9123456789,'ADMIN');
 insert into guser(user_id,email,password,phone_number,role) values(2,'sivaganesh@gmail.com','bathula',8123456789,'GOADMIN');
 insert into guser(user_id,email,password,phone_number,role) values(3,'sriharsha@gmail.com','sriharsha',7780767815,'USER');
+insert into guser(user_id,email,password,phone_number,role) values(101,'srinu@gmail.com','srinu',7123344555,'USER');
+insert into guser(user_id,email,password,phone_number,role) values(102,'satya@gmail.com','satya',8778812345,'USER');
 insert into guser(user_id,email,password,phone_number,role) values(4,'murali@gmail.com','krishna',7123456789,'PRODUCTMAS');
 insert into cart (cart_id, product_id , quantity , user_id) values(11,14,55,1);
-insert into product (product_id, colour, dimension, manufacturer, price, product_category, product_name ,quantity, specification)values(14,'red','five','harsha',500,5,'gloves',57,'hello');
+insert into cart (cart_id, product_id , quantity , user_id) values(12,106,1,101);
+insert into cart (cart_id, product_id , quantity , user_id) values(13,107,1,102);
+insert into product (product_id, colour, dimension, manufacturer, price, product_category, product_name ,quantity, specification)values(14,'red','medium','hcompany',500,'Golf','gloves',57,'use for hands');
+insert into product (product_id, colour, dimension, manufacturer, price, product_category, product_name ,quantity, specification)values(106,'black','small','acompany',1000,'camping','Head Lamp',4,'careful');
+insert into product (product_id, colour, dimension, manufacturer, price, product_category, product_name ,quantity, specification)values(107,'red','large','scompany',700,'Mountain','Helmet',7,'head');
+insert into product (product_id, colour, dimension, manufacturer, price, product_category, product_name ,quantity, specification)values(108,'red','five','bcompany',800,'outdoor','flashlight',50,'outside');
+insert into product (product_id, colour, dimension, manufacturer, price, product_category, product_name ,quantity, specification)values(109,'red','small','xyzcompany',900,'personal','purse',32,'men');

@@ -1,7 +1,7 @@
-package com.cg.greatooutdoors.serviceTest;
+package com.cg.greatoutdoors.serviceTest;
 
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -22,7 +22,7 @@ import com.cg.greatoutdoors.service.CartServiceInterface;
 import com.cg.greatoutdoors.service.UserServiceInterface;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest()
 @Transactional
 
 public class CartTest {
@@ -41,9 +41,9 @@ public class CartTest {
 		assertEquals("User Not Found",expection.getMessage());
 		Throwable expection1=assertThrows(ProductException.class,()->{cartService.checkId(101,100);});
 		assertEquals("Product Not Found",expection1.getMessage());
-		Cart cart=new Cart(106,4);
-		cart.setUser(userService.findUserId(101));
-		assertFalse(cartService.checkId(101,106));
+		assertTrue(cartService.checkId(101,106));
+		//assertFalse(cartService.checkId(101,106));
+
 		
 		
 	}
@@ -54,9 +54,8 @@ public class CartTest {
 		Cart cart=new Cart(106,4);
 		cart.setUser(userService.findUserId(102));
 		assertEquals(true,cartService.addToCart(cart));
-		assertEquals(true,cartService.updateCartProduct(106,5));
-		Throwable expection=assertThrows(ProductException.class,()->{cartService.updateCartProduct(106,18);});
-		assertEquals("Product Quantity cannot be less than zero",expection.getMessage());
+		Throwable expection1=assertThrows(AddToCartException.class,()->{cartService.addToCart(cart);});
+		assertEquals("Product already in cart",expection1.getMessage());
 	}
 	
 	@Test
@@ -73,12 +72,11 @@ public class CartTest {
 	@Test
 	public void updateQuantityTest() throws UserException {
 		Cart cart=new Cart(106,0);
-		cart.setUser(userService.findUserId(101));
+		cart.setUser(userService.findUserId(2));
 		Throwable expection=assertThrows(AddToCartException.class,()->{cartService.addToCart(cart);});
 		assertEquals("Quantity to be added cannot be less than or equal to zero",expection.getMessage());
 		
-		Throwable expection1=assertThrows(AddToCartException.class,()->{cartService.addToCart(cart);});
-		assertEquals("Product already in cart",expection1.getMessage());
+		
 		
 		
 	}
@@ -96,16 +94,6 @@ public class CartTest {
 		
 	}
 	
-	@Test
-	public void retriveTest() throws UserException, ProductException, AddToCartException {
-		Throwable expection=assertThrows(ProductException.class,()->{cartService.retrive(101);});
-		assertEquals("List is empty",expection.getMessage());
-		Cart cart=new Cart(106,4);
-		cart.setUser(userService.findUserId(101));
-		assertEquals(true,cartService.addToCart(cart));
-		assertNotNull(cartService.retrive(101));
-		
-	}
 	
 
 

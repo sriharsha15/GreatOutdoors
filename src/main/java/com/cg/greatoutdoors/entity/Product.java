@@ -28,7 +28,7 @@ public class Product {
 	@Column(name="quantity",length=3)
 	private int quantity;
 	@Column(name="productCategory",length=10)
-	private int productCategory;
+	private String productCategory;
 	
 	@Column(name="productName",length=10)
 	private String productName;
@@ -89,11 +89,11 @@ public class Product {
 		this.quantity = quantity;
 	}
 
-	public int getProductCategory() {
+	public String getProductCategory() {
 		return productCategory;
 	}
 
-	public void setProductCategory(int productCategory) {
+	public void setProductCategory(String productCategory) {
 		this.productCategory = productCategory;
 	}
 
